@@ -19,6 +19,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:debug": "react-scripts --inspect-brk test --runInBand --no-cache",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -43,7 +44,14 @@
     "@types/jest": "^29.2.4",
     "@types/node": "^18.11.14",
     "autoprefixer": "^10.4.13",
+    "axios": "^1.2.1",
     "postcss": "^8.4.20",
     "tailwindcss": "^3.2.4"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "axios": "axios/dist/node/axios.cjs"
+    }
   }
+  
 }
