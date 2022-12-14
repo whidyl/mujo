@@ -16,19 +16,21 @@ const Tasks = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            try {
-                const response = await axios.get<GetTasksResponse>('/api/tasks');
-                console.log(JSON.stringify(response));
-                setTasks(response.data.tasks);
-            } catch {}
-            
+            axios.get<GetTasksResponse>('/api/tasks')
+            .then(res => {
+                if (res) setTasks(res.data.tasks);
+                
+            })
+            .catch(e => {
+                console.log(e);
+            });
         };
         fetchData();
     }, []);
-
+    
     return (
         <div>
-            {tasks.map(task => (<div key={task.id}>{task.label}</div>))}
+            {tasks.map(task => (<div key={task.id} data-testid="task">{task.label}</div>))}
         </div>
     );
 }
